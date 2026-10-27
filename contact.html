@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKODI CREATIVES — Contact</title>
+    <link rel="shortcut icon" href="images/akodi-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <div class="nav-wrapper">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="images/akodi-logo.png" alt="AKODI logo">
+                <span class="logo-text">AKODI</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="work.html" class="nav-link">Work</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- ================= PAGE HEADER ================= -->
+    <section class="page-header">
+        <div class="page-header-inner">
+            <p class="eyebrow">CONTACT</p>
+            <h1>Start a project.</h1>
+            <p class="page-sub">Two fields. No friction. Just the essentials. We respond within 24 hours.</p>
+        </div>
+    </section>
+
+    <!-- ================= CONTACT SECTION ================= -->
+    <section class="contact-section">
+        <div class="contact-inner">
+
+            <!-- LEFT: FORM -->
+            <div class="contact-form-wrap">
+                <form class="contact-form" onsubmit="event.preventDefault(); handleSubmit();">
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="you@example.com" oninput="checkEmail(this)">
+                    </div>
+
+                    <div class="form-group hidden" id="messageGroup">
+                        <label for="message">Project Details <span class="label-light">(optional)</span></label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your project..."></textarea>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="btn-submit">Send Inquiry</button>
+
+                    <p class="form-status" id="formStatus"></p>
+                </form>
+            </div>
+
+            <!-- RIGHT: CONTACT INFO -->
+            <div class="contact-info">
+                <div class="info-block">
+                    <p class="info-label">Phone</p>
+                    <p class="info-value">098 137 2224</p>
+                </div>
+
+                <div class="info-block">
+                    <p class="info-label">Facebook</p>
+                    <p class="info-value"><a href="https://www.facebook.com/profile.php?id=61559248915673">akodicreatives</a></p>
+                </div>
+
+                <div class="info-block">
+                    <p class="info-label">Email</p>
+                    <p class="info-value">akodicreatives@gmail.com</p>
+                </div>
+
+                <div class="info-block">
+                    <p class="info-label">Location</p>
+                    <p class="info-value">Malawi</p>
+                </div>
+
+                <div class="info-block">
+                    <p class="info-label">Response Time</p>
+                    <p class="info-value">Within 24 hours</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= CTA ================= -->
+    <section class="cta-band">
+        <div class="cta-inner">
+            <h2>Ready when you are.</h2>
+            <p>Send a message. We will take it from there.</p>
+            <a href="#" class="btn-light" onclick="event.preventDefault(); document.getElementById('name').focus(); window.scrollTo({top: 400, behavior: 'smooth'});">Go to Form ↑</a>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="images/akodi-logo-white.png" alt="AKODI logo" class="footer-logo">
+                <p>Identity without the noise. Design that respects your time and your audience.</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="work.html">Work</a>
+                <a href="services.html">Services</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <p class="footer-copy">© 2026 AKODI CREATIVES — Simplicity is intentional.</p>
+        </div>
+    </footer>
+
+    <!-- ================= PAGE SCRIPT ================= -->
+    <script>
+        function checkEmail(input) {
+            var messageGroup = document.getElementById('messageGroup');
+            if (input.value.indexOf('@') !== -1) {
+                messageGroup.classList.remove('hidden');
+            } else {
+                messageGroup.classList.add('hidden');
+            }
+        }
+
+        function handleSubmit() {
+            var name = document.getElementById('name').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var status = document.getElementById('formStatus');
+            var btn = document.getElementById('submitBtn');
+
+            if (!name || !email) {
+                status.textContent = 'Please fill in both name and email.';
+                status.style.color = '#E63946';
+                return;
+            }
+
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+
+            setTimeout(function() {
+                status.textContent = 'Thank you. We will respond within 24 hours.';
+                status.style.color = '#F15A24';
+                document.querySelector('.contact-form').reset();
+                document.getElementById('messageGroup').classList.add('hidden');
+                btn.textContent = 'Send Inquiry';
+                btn.disabled = false;
+            }, 1200);
+        }
+    </script>
+
+</body>
+</html>
